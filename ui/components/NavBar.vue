@@ -46,12 +46,12 @@ export default {
     };
   },
   async mounted() {
-    let result = await this.$axios.$post("/api/scan/plugins");
+    /*let result = await this.$axios.$post("/api/scan/plugins");
     if (result.data && result.data.length > 0) {
       this.pluginList = _.filter(result.data,(item)=>{
         return item.ui;
       });
-    }
+    }*/
   },
   computed: {},
   methods: {},

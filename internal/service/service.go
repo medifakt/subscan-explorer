@@ -25,7 +25,7 @@ func New() (s *Service) {
 	d, dbStorage := dao.New()
 	s = &Service{dao: d}
 	s.initSubRuntimeLatest()
-	pluginRegister(dbStorage)
+	// pluginRegister(dbStorage)
 	return s
 }
 
@@ -56,11 +56,13 @@ func (s *Service) initSubRuntimeLatest() {
 
 	// find db
 	if recent := s.dao.RuntimeVersionRecent(); recent != nil && strings.HasPrefix(recent.RawData, "0x") {
+		fmt.Printf("hhhh")
 		metadata.Latest(&metadata.RuntimeRaw{Spec: recent.SpecVersion, Raw: recent.RawData})
 		return
 	}
 	// find metadata for blockChain
 	if raw := s.regCodecMetadata(); strings.HasPrefix(raw, "0x") {
+		fmt.Printf("lllll")
 		metadata.Latest(&metadata.RuntimeRaw{Spec: 1, Raw: raw})
 		return
 	}
